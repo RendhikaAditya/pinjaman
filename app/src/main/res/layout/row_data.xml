@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:padding="16dp"
+    android:background="@drawable/shape"
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/blue_main">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_data"
+                app:tint="@color/blue_500" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/namaPeminjam"
+                android:text="NamaOrang" />
+            <TextView
+                android:id="@+id/namaOrganisasiPeminjam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NamaPerusahaanAtauOrganisasi"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutButon"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lihat Data Lengkap"
+            android:textColor="@color/orange_500"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/orange_200"
+            android:paddingVertical="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:id="@+id/btnLihatData"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hapus"
+                android:id="@+id/btnHapus"
+                android:textColor="@color/red_500"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/red_200"
+                android:paddingVertical="10dp"
+                android:layout_weight="4"
+                android:layout_marginRight="8dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textColor="@color/gren_500"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/gren_200"
+                android:paddingVertical="10dp"
+                android:layout_weight="6"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

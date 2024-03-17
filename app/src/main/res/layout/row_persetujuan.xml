@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/shape"
+    android:backgroundTint="@color/blue_500">
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/shape"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_pengguna"
+            android:text="Nama Nasabah"
+            android:gravity="center"
+            android:drawablePadding="5dp"/>
+
+
+
+        <TextView
+            android:id="@+id/jumblah_pengajuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp1.150.000"
+            android:textColor="@color/blue_500"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="12 januari 2024"
+                android:id="@+id/tglPengajuan"
+                android:drawableLeft="@drawable/ic_date"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ansuran : " />
+
+                <TextView
+                    android:id="@+id/lamaAnsuran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 Bulan"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tolak"
+                android:id="@+id/btnTolak"
+                android:textColor="@color/red_500"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/red_200"
+                android:paddingVertical="10dp"
+                android:layout_weight="4"
+                android:layout_marginRight="8dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/btnSetujui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Setujui"
+                android:textColor="@color/gren_500"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/gren_200"
+                android:paddingVertical="10dp"
+                android:layout_weight="6"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Kelola Data">
+        <menu>
+            <item
+                android:id="@+id/nav_nasabah"
+                android:icon="@drawable/ic_person"
+                android:title="Nasabah" />
+            <item
+                android:id="@+id/nav_pengajuan"
+                android:icon="@drawable/ic_receipt"
+                android:title="Pengajuan" />
+            <item
+                android:id="@+id/nav_pinjaman"
+                android:icon="@drawable/ic_payments"
+                android:title="Pinjaman" />
+            <item
+                android:id="@+id/nav_pengguna"
+                android:icon="@drawable/ic_pengguna"
+                android:title="Pengguna"/>
+        </menu>
+    </item>
+
+    <item android:title="Akun">
+        <menu>
+            <item
+                android:id="@+id/nav_ganti_password"
+                android:icon="@drawable/ic_password"
+                android:title="Ganti Password" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout Akun" />
+        </menu>
+    </item>
+</menu>
+

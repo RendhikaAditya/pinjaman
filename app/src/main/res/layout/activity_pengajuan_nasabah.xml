@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".view.nasabah.pengajuan.PengajuanNasabahActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/s"
+            android:translationZ="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:layout_gravity="center"
+                android:id="@+id/btnBack"
+                android:layout_marginLeft="16dp"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Penajuan Peminjaman"
+                android:id="@+id/title"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah foto KTP"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/imageViewKTP"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeimg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Pilih Gambar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah foto KK"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/imageViewKK"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeimg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Pilih Gambar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah foto unit"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/imageViewUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeimg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Pilih Gambar"/>
+
+
+                <!-- Nama Nasabah -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:hintTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/danaPengajuan"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Total Pengajuan Pinjaman"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Lama Ansuran :"
+                    android:textColor="@color/black"/>
+                <Spinner
+                    android:id="@+id/spAnsuran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_stroke"
+                    android:entries="@array/ansuran"
+                    android:paddingHorizontal="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingVertical="10dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <Button
+                        android:id="@+id/btnSimpan"
+                        style="@style/ButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape"
+                        android:text="Simpan Data"
+                        android:textColor="@color/blue_main"
+                        android:textSize="16sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progresBar"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:indeterminateTintMode="src_in"
+                        android:translationZ="10dp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</LinearLayout>

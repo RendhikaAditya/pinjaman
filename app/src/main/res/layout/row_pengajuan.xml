@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/shape"
+    android:backgroundTint="@color/blue_500">
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/shape"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="12 januari 2024"
+            android:id="@+id/tglPengajuan"
+            android:drawableLeft="@drawable/ic_date"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/jumblah_pengajuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp1.150.000"
+            android:textColor="@color/blue_500"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ansuran : " />
+
+            <TextView
+                android:id="@+id/lamaAnsuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 Bulan"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
