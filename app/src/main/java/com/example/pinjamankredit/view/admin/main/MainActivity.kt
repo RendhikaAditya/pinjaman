@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.example.pinjamankredit.R
@@ -86,6 +87,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupListener() {
         binding.titleTextView1.text = sharedPreferences.getString(Constants.KEY_NAMA)
+
+        val navHeader = binding.navView.getHeaderView(0)
+        val usernameTextView = navHeader.findViewById<TextView>(R.id.usernameTextView)
+        val positionTextView = navHeader.findViewById<TextView>(R.id.positionTextView)
+        usernameTextView.text = sharedPreferences.getString(Constants.KEY_NAMA)
+        positionTextView.text = sharedPreferences.getString(Constants.KEY_LEVEL)
         if(!sharedPreferences.getBoolean(Constants.KEY_IS_LOGIN)){
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             finish()
@@ -127,10 +134,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     true
                 }
-                R.id.nav_ganti_password -> {
-//                    startActivity(Intent(this@MainActivity, GantiPasswordActivity::class.java))
-                    true
-                }
+
                 R.id.nav_logout -> {
                     sharedPreferences.putBoolean(Constants.KEY_IS_LOGIN, false)
 

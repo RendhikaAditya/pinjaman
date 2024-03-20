@@ -32,7 +32,7 @@ class AddNasabahActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var helper: Helper
 
-    lateinit var tglSql : String
+    var tglSql : String = ""
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

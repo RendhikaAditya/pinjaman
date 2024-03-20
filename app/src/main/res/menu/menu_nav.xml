@@ -23,10 +23,10 @@
 
     <item android:title="Akun">
         <menu>
-            <item
-                android:id="@+id/nav_ganti_password"
-                android:icon="@drawable/ic_password"
-                android:title="Ganti Password" />
+<!--            <item-->
+<!--                android:id="@+id/nav_ganti_password"-->
+<!--                android:icon="@drawable/ic_password"-->
+<!--                android:title="Ganti Password" />-->
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"

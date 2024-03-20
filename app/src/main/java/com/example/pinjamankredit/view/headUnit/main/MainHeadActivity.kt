@@ -11,6 +11,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -214,6 +215,11 @@ class MainHeadActivity : AppCompatActivity() {
 
 
     private fun setupListener() {
+        val navHeader = binding.navView.getHeaderView(0)
+        val usernameTextView = navHeader.findViewById<TextView>(R.id.usernameTextView)
+        val positionTextView = navHeader.findViewById<TextView>(R.id.positionTextView)
+        usernameTextView.text = sharedPreferences.getString(Constants.KEY_NAMA)
+        positionTextView.text = sharedPreferences.getString(Constants.KEY_LEVEL)
 
         with(binding){
             tabLayout.addTab(tabLayout.newTab().setText("Diajukan"))
@@ -286,10 +292,7 @@ class MainHeadActivity : AppCompatActivity() {
                     )
                     true
                 }
-                R.id.nav_ganti_password -> {
-//                    startActivity(Intent(this@MainActivity, GantiPasswordActivity::class.java))
-                    true
-                }
+                
                 R.id.nav_logout -> {
                     startActivity(
                         Intent(this@MainHeadActivity, LoginActivity::class.java)

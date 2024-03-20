@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.pinjamankredit.R
@@ -105,6 +106,11 @@ class MainNasabahActivity : AppCompatActivity() {
 
     private fun setupListener() {
 
+        val navHeader = binding.navView.getHeaderView(0)
+        val usernameTextView = navHeader.findViewById<TextView>(R.id.usernameTextView)
+        val positionTextView = navHeader.findViewById<TextView>(R.id.positionTextView)
+        usernameTextView.text = sharedPreferences.getString(Constants.KEY_NAMA)
+        positionTextView.text = sharedPreferences.getString(Constants.KEY_LEVEL)
 
         binding.titleTextView1.text = sharedPreferences.getString(Constants.KEY_NAMA)
         if(!sharedPreferences.getBoolean(Constants.KEY_IS_LOGIN)){
@@ -127,10 +133,6 @@ class MainNasabahActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_ganti_password -> {
-//                    startActivity(Intent(this@MainActivity, GantiPasswordActivity::class.java))
-                    true
-                }
                 R.id.nav_logout -> {
                     sharedPreferences.putBoolean(Constants.KEY_IS_LOGIN, false)
                     startActivity(
@@ -181,6 +183,5 @@ class MainNasabahActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }
