@@ -126,7 +126,8 @@ interface Api {
         @Field("foto_kk") fotoKk : String,
         @Field("foto_unit") fotoUnit : String,
         @Field("dana_pinjaman_diajukan") danaPinjamanDiajukan: String,
-        @Field("lama_ansuran") lamaAngsuran: String
+        @Field("lama_ansuran") lamaAngsuran: String,
+        @Field("berkas") berkas:String
     ):Response<BaseResponse>
 
     @FormUrlEncoded

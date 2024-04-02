@@ -8,14 +8,6 @@
         <item>Admin</item>
         <item>Unit Head</item>
     </string-array>
-    <string-array name="ansuran">
-        <item>6 Bulan</item>
-        <item>12 Bulan</item>
-        <item>24 Bulan</item>
-        <item>36 Bulan</item>
-        <item>48 Bulan</item>
-        <item>60 Bulan</item>
-    </string-array>
     <string-array name="pekerjaan" >
         <item>PNS</item>
         <item>Swasta</item>
@@ -23,4 +15,57 @@
         <item>Buruh</item>
         <item>DLL</item>
     </string-array>
+    <string-array name="ansuran">
+        <item>12 Bulan</item>
+        <item>18 Bulan</item>
+        <item>24 Bulan</item>
+        <item>30 Bulan</item>
+        <item>36 Bulan</item>
+    </string-array>
+
+
+    <string-array name="pinjaman">
+        <item>Rp 5,000,000</item>
+        <item>Rp 5,250,000</item>
+        <item>Rp 5,500,000</item>
+        <item>Rp 5,750,000</item>
+        <item>Rp 6,000,000</item>
+        <item>Rp 6,250,000</item>
+        <item>Rp 6,500,000</item>
+        <item>Rp 6,750,000</item>
+        <item>Rp 7,000,000</item>
+        <item>Rp 7,250,000</item>
+        <item>Rp 7,500,000</item>
+        <item>Rp 7,750,000</item>
+        <item>Rp 8,000,000</item>
+        <item>Rp 8,250,000</item>
+        <item>Rp 8,500,000</item>
+        <item>Rp 8,750,000</item>
+        <item>Rp 9,000,000</item>
+        <item>Rp 9,250,000</item>
+        <item>Rp 9,500,000</item>
+        <item>Rp 9,750,000</item>
+        <item>Rp 10,000,000</item>
+        <item>Rp 10,250,000</item>
+        <item>Rp 10,500,000</item>
+        <item>Rp 10,750,000</item>
+        <item>Rp 11,000,000</item>
+        <item>Rp 11,250,000</item>
+        <item>Rp 11,500,000</item>
+        <item>Rp 11,750,000</item>
+        <item>Rp 12,000,000</item>
+        <item>Rp 12,250,000</item>
+        <item>Rp 12,500,000</item>
+        <item>Rp 12,750,000</item>
+        <item>Rp 13,000,000</item>
+        <item>Rp 13,250,000</item>
+        <item>Rp 13,500,000</item>
+        <item>Rp 13,750,000</item>
+        <item>Rp 14,000,000</item>
+        <item>Rp 14,250,000</item>
+        <item>Rp 14,500,000</item>
+        <item>Rp 14,750,000</item>
+        <item>Rp 15,000,000</item>
+    </string-array>
+
 </resources>
