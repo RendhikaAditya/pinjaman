@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, MainNasabahActivity::class.java))
                 finish()
             }
-            if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("nasabah")){
+            if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("Unit Head")){
                 startActivity(Intent(this@MainActivity, MainHeadActivity::class.java))
                 finish()
             }

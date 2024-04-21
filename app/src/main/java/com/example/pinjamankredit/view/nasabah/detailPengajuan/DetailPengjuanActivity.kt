@@ -1,5 +1,6 @@
 package com.example.pinjamankredit.view.nasabah.detailPengajuan
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import com.example.pinjamankredit.databinding.ActivityDetailPengjuanBinding
 import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.response.PengajuanResponse
 import com.example.pinjamankredit.util.Helper
+import com.example.pinjamankredit.util.PdfViewActivity
 import com.example.pinjamankredit.util.ZoomableImageDialog
 
 class DetailPengjuanActivity : AppCompatActivity() {
@@ -46,6 +48,12 @@ class DetailPengjuanActivity : AppCompatActivity() {
             btnFotoUnit.setOnClickListener {
                 val imageUrl = "${ApiService.imageURL}${data.foto_unit}"
                 helper.showImageDialog(this@DetailPengjuanActivity, imageUrl, "Foto Unit")
+            }
+            btnFileForm.setOnClickListener {
+                val pdfIntent = Intent(this@DetailPengjuanActivity, PdfViewActivity::class.java)
+                pdfIntent.putExtra("pdfUrl", "${ApiService.imageURL}${data.berkas_pinjaman}")
+                startActivity(pdfIntent)
+
             }
             btnBack.setOnClickListener {
                 finish()

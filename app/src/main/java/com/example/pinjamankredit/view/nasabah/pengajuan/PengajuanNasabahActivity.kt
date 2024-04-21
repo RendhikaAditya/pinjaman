@@ -20,6 +20,7 @@ import android.text.TextWatcher
 import android.util.Base64
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -85,12 +86,11 @@ class PengajuanNasabahActivity : AppCompatActivity() {
 
     }
 
-    fun hitungAngsuran(pinjaman: Int, durasi: Int): Double {
-        // Bunga per bulan (misalnya 1% per bulan)
-        val bungaPerBulan = 0.0955
-        // Menghitung total angsuran per bulan
-        val totalAngsuranPerBulan = (pinjaman.toDouble() * bungaPerBulan) / (1 - (1 / Math.pow(1 + bungaPerBulan, durasi.toDouble())))
-        return totalAngsuranPerBulan
+    fun hitungAngsuran(pinjaman: Int, durasi: Int): String {
+        val totalAngsuranPerBulan = (pinjaman * 1.7) / durasi
+        val totalAngsuranPerBulanBulat = Math.round(totalAngsuranPerBulan).toDouble()
+//        return
+        return "${helper.formatRupiah(totalAngsuranPerBulanBulat.toString())}"
     }
 
     override fun onRequestPermissionsResult(
@@ -112,11 +112,11 @@ class PengajuanNasabahActivity : AppCompatActivity() {
 
     private fun startDownload() {
         val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val uri = Uri.parse("https://pii.or.id/uploads/dummies.pdf")
+        val uri = Uri.parse("https://absensi.superaset.com/file.pdf")
         val request = DownloadManager.Request(uri)
         request.setDestinationInExternalPublicDir(
             Environment.DIRECTORY_DOWNLOADS,
-            "dummies.pdf"
+            "file.pdf"
         )
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         downloadId = downloadManager.enqueue(request)
@@ -144,7 +144,7 @@ class PengajuanNasabahActivity : AppCompatActivity() {
     }
 
     fun openFile() {
-        val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "dummies.pdf")
+        val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "file.pdf")
         val uri = FileProvider.getUriForFile(this, "${packageName}.provider", file)
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(uri, "application/pdf")
@@ -188,16 +188,59 @@ class PengajuanNasabahActivity : AppCompatActivity() {
         return formatter.format(this)
     }
 
+
     private fun setupListener() {
         with(binding){
 
-            var ansuran = spAnsuran.selectedItem
-            var pinjaman = spPinjaman.selectedItem
+            spPinjaman.onItemSelectedListener = object  : AdapterView.OnItemClickListener,
+                AdapterView.OnItemSelectedListener {
+                override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-            val ansuranNum = ansuran.toString().replace("[^\\d]".toRegex(), "").toInt()
-            val pinjamanNum = pinjaman.toString().replace("[^\\d]".toRegex(), "").toInt()
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    var ansuran = spAnsuran.selectedItem
+                    var pinjaman = spPinjaman.selectedItem
+
+                    val ansuranNum = ansuran.toString().replace("[^\\d]".toRegex(), "").toInt()
+                    val pinjamanNum = pinjaman.toString().replace("[^\\d]".toRegex(), "").toInt()
+
+                    asuranBulanan.text = ""+hitungAngsuran(pinjamanNum,ansuranNum)
 
 
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+            }
+            spAnsuran.onItemSelectedListener = object : AdapterView.OnItemClickListener,
+                AdapterView.OnItemSelectedListener {
+                override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    var ansuran = spAnsuran.selectedItem
+                    var pinjaman = spPinjaman.selectedItem
+
+                    val ansuranNum = ansuran.toString().replace("[^\\d]".toRegex(), "").toInt()
+                    val pinjamanNum = pinjaman.toString().replace("[^\\d]".toRegex(), "").toInt()
+
+                    asuranBulanan.text = ""+hitungAngsuran(pinjamanNum,ansuranNum)
+
+                    Log.w("TAG",
+
+                        "HH ${binding.spAnsuran.selectedItem} PP ${binding.spPinjaman.selectedItem}\n ${hitungAngsuran(pinjamanNum,ansuranNum)}"
+
+                    )
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+            }
 
             binding.downloadLayout.setOnClickListener {
                 startDownload()
@@ -205,7 +248,6 @@ class PengajuanNasabahActivity : AppCompatActivity() {
             }
             binding.openButton.setOnClickListener { openFile() }
 
-            danaPengajuan.addTextChangedListener(RupiahTextWatcher(danaPengajuan))
 
             imageViewKK.setOnClickListener {
                 val options = arrayOf("Ambil dari Galeri", "Buka Kamera")
@@ -278,6 +320,10 @@ class PengajuanNasabahActivity : AppCompatActivity() {
             }
 
             btnSimpan.setOnClickListener {
+                var pinjaman = spPinjaman.selectedItem
+
+                val pinjamanNum = pinjaman.toString().replace("[^\\d]".toRegex(), "").toInt()
+
                 viewModel.fetchPengajuan(
                     "${sharedPreferences.getString(Constants.KEY_id)}",
                     "${getStringImage(selectedImageKTP)}",
@@ -287,11 +333,8 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                     "${binding.spAnsuran.selectedItem}",
                     "${getFileBase64(selectedPdfUri!!)}"
                 )
-                Log.w("TAG",
 
-                    "HH ${binding.spAnsuran.selectedItem} PP ${binding.spPinjaman.selectedItem}\n ${hitungAngsuran(ansuranNum, pinjamanNum)}"
 
-                )
             }
         }
     }
