@@ -10,7 +10,9 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -39,7 +41,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class MainHeadActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityMainHeadBinding
+    private lateinit var binding: ActivityMainHeadBinding
 
     private val api by lazy { ApiService.getClient() }
     private lateinit var viewModel: HeadViewModel
@@ -63,12 +65,14 @@ class MainHeadActivity : AppCompatActivity() {
         setupObserve()
 
     }
+
     fun hitungAngsuran(pinjaman: Int, durasi: Int): String {
         val totalAngsuranPerBulan = (pinjaman * 1.7) / durasi
         val totalAngsuranPerBulanBulat = Math.round(totalAngsuranPerBulan).toDouble()
 //        return
         return "${helper.formatRupiah(totalAngsuranPerBulanBulat.toString())}"
     }
+
     override fun onResume() {
         super.onResume()
         viewModel.fetchSummary()
@@ -84,6 +88,7 @@ class MainHeadActivity : AppCompatActivity() {
                     binding.rvPengajuan.visibility = View.GONE
                     Log.d("deleteDeviceId", " :: Loading ")
                 }
+
                 is Resource.Success -> {
                     binding.progresBar.visibility = View.GONE
                     Log.d("deleteDeviceId", " :: response :: ${it.data!!}")
@@ -92,16 +97,17 @@ class MainHeadActivity : AppCompatActivity() {
                         adapter.setData(it.data.data)
                         binding.rvPengajuan.visibility = View.VISIBLE
                         adapter.filterDataByStatus(pageActive)
-                        if (adapter.datas.isEmpty()){
+                        if (adapter.datas.isEmpty()) {
                             binding.layoutKosong.visibility = View.VISIBLE
                         }
                         Log.d("deleteDeviceId", ":: Sukses = ${it.data} :: ${it.data.data.size}")
-                    }else{
+                    } else {
                         Log.d("deleteDeviceId", " :: Kosong")
                         binding.rvPengajuan.visibility = View.GONE
                         binding.layoutKosong.visibility = View.VISIBLE
                     }
                 }
+
                 is Resource.Error -> {
                     binding.progresBar.visibility = View.GONE
                     binding.layoutKosong.visibility = View.VISIBLE
@@ -110,22 +116,43 @@ class MainHeadActivity : AppCompatActivity() {
             }
         })
         adapter = PengajuanHeadAdapter(arrayListOf(),
-            object : PengajuanHeadAdapter.OnAdapterListener{
+            object : PengajuanHeadAdapter.OnAdapterListener {
                 override fun onClick(result: PengajuanResponse.Data) {
-                    startActivity(Intent(this@MainHeadActivity, DetailPengjuanActivity::class.java).putExtra("data", result))
+                    startActivity(
+                        Intent(
+                            this@MainHeadActivity,
+                            DetailPengjuanActivity::class.java
+                        ).putExtra("data", result)
+                    )
                 }
 
                 override fun onClickSetujui(model: PengajuanResponse.Data) {
-                    showInputDialog(this@MainHeadActivity, "Berapa dana pinjaman yang bisa diterima?",{ inputText ->
+                    val pinjamanArray = resources.getStringArray(R.array.pinjaman)
+                    showInputDialog(
+                        this@MainHeadActivity,
+                        "Berapa dana pinjaman yang bisa diterima?",
+                        pinjamanArray
+                    ) { inputText ->
                         viewModel.fetchCreateBayar(
                             "${model.lama_ansuran.split(" ").get(0)}",
                             "${model.kode_pp}",
                             "1",
-                            "${hitungAngsuran(model.dana_pinjaman_diajukan.toInt(), model.lama_ansuran.split(" ").get(0).toInt())}",
+                            "${
+                                hitungAngsuran(
+                                    inputText.replace("Rp ",""). replace(",","").toInt(),
+                                    model.lama_ansuran.split(" ").get(0).toInt()
+                                )
+                            }",
                             "Belum"
                         )
-                        viewModel.fetchUpdate(model.kode_pp, "Di terima", "Pinjaman Di setujui", "$inputText");
-                    })
+                        viewModel.fetchUpdate(
+                            model.kode_pp,
+                            "Di terima",
+                            "Pinjaman Di setujui",
+                            "${inputText.replace("Rp ",""). replace(",","")}"
+                        )
+                        Log.d("TAG", "onClickSetujui:: $inputText")
+                    }
                 }
 
                 override fun onClickTolak(model: PengajuanResponse.Data) {
@@ -142,17 +169,27 @@ class MainHeadActivity : AppCompatActivity() {
                 is Resource.Loading -> {
                     Log.d("UpdateStatus", " :: Loading ")
                 }
+
                 is Resource.Success -> {
                     Log.d("UpdateStatus", " :: response :: ${it.data!!}")
                     if (it.data.sukses) {
                         viewModel.fetchPengajuan()
                         Log.d("UpdateStatus", ":: Sukses")
-                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
-                    }else{
+                        Toast.makeText(
+                            this@MainHeadActivity,
+                            "${it.data.pesan}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
                         Log.d("UpdateStatus", " :: Kosong")
-                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainHeadActivity,
+                            "${it.data.pesan}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
+
                 is Resource.Error -> {
                     Log.d("UpdateStatus", " :: Error")
                 }
@@ -164,16 +201,26 @@ class MainHeadActivity : AppCompatActivity() {
                 is Resource.Loading -> {
                     Log.d("bayar", " :: Loading ")
                 }
+
                 is Resource.Success -> {
                     Log.d("bayar", " :: response :: ${it.data!!}")
                     if (it.data.sukses) {
                         Log.d("bayar", ":: Sukses")
-                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
-                    }else{
+                        Toast.makeText(
+                            this@MainHeadActivity,
+                            "${it.data.pesan}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
                         Log.d("bayar", " :: Kosong")
-                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainHeadActivity,
+                            "${it.data.pesan}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
+
                 is Resource.Error -> {
                     Log.d("bayar", " :: Error")
                 }
@@ -187,32 +234,45 @@ class MainHeadActivity : AppCompatActivity() {
                 is Resource.Loading -> {
                     Log.d("Summary", " :: Loading ")
                 }
+
                 is Resource.Success -> {
                     Log.d("Summary", " :: response :: ${it.data!!}")
                     if (it.data.sukses) {
                         binding.txtTotalNasabahMeminjam.text = it.data.total_nasabah_pinjaman
                         binding.txtTotalNasabah.text = it.data.total_nasabah
                         binding.txtTotalPengguna.text = it.data.total_pengguna
-                        binding.txtTotalPinjaman.text =helper.formatRupiah(it.data.total_pinjaman_diterima)
+                        binding.txtTotalPinjaman.text =
+                            helper.formatRupiah(it.data.total_pinjaman_diterima)
                         Log.d("Summary", ":: Sukses")
-                    }else{
+                    } else {
                         Log.d("Summary", " :: Kosong")
                     }
                 }
+
                 is Resource.Error -> {
                     Log.d("Summary", " :: Error")
                 }
             }
         })
     }
-    fun showInputDialog(context: Context, title: String, callback: (String) -> Unit) {
-        val input = EditText(context)
+
+    fun showInputDialog(
+        context: Context,
+        title: String,
+        itemList: Array<String>,
+        callback: (String) -> Unit
+    ) {
+        val spinner = Spinner(context)
+        val adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, itemList)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
         val dialog = AlertDialog.Builder(context)
             .setTitle(title)
-            .setView(input)
+            .setView(spinner)
             .setPositiveButton("OK") { _, _ ->
-                val inputValue = input.text.toString()
-                callback.invoke(inputValue)
+                val selectedItem = spinner.selectedItem.toString()
+                callback.invoke(selectedItem)
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.cancel()
@@ -221,6 +281,7 @@ class MainHeadActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
     fun showRejectLoanDialog(context: Context, callback: () -> Unit) {
         val dialogTitle = "Konfirmasi Penolakan Pinjaman"
         val dialogMessage = "Apakah Anda yakin ingin menolak pinjaman ini?"
@@ -255,7 +316,7 @@ class MainHeadActivity : AppCompatActivity() {
         usernameTextView.text = sharedPreferences.getString(Constants.KEY_NAMA)
         positionTextView.text = sharedPreferences.getString(Constants.KEY_LEVEL)
 
-        with(binding){
+        with(binding) {
             tabLayout.addTab(tabLayout.newTab().setText("Diajukan"))
             tabLayout.addTab(tabLayout.newTab().setText("Diterima"))
             tabLayout.addTab(tabLayout.newTab().setText("Ditolak"))
@@ -268,11 +329,13 @@ class MainHeadActivity : AppCompatActivity() {
                         pageActive = "konfirmasi"
                         viewModel.fetchPengajuan()
                     }
-                    1 ->{
+
+                    1 -> {
                         pageActive = "Di Terima"
                         viewModel.fetchPengajuan()
                     }
-                    2 ->{
+
+                    2 -> {
                         pageActive = "Di Tolak"
                         viewModel.fetchPengajuan()
                     }
@@ -289,11 +352,11 @@ class MainHeadActivity : AppCompatActivity() {
         })
 
         binding.titleTextView1.text = sharedPreferences.getString(Constants.KEY_NAMA)
-        if(!sharedPreferences.getBoolean(Constants.KEY_IS_LOGIN)){
+        if (!sharedPreferences.getBoolean(Constants.KEY_IS_LOGIN)) {
             startActivity(Intent(this@MainHeadActivity, LoginActivity::class.java))
             finish()
-        }else{
-            if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("nasabah")){
+        } else {
+            if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("nasabah")) {
                 startActivity(Intent(this@MainHeadActivity, MainNasabahActivity::class.java))
                 finish()
             }
@@ -320,19 +383,21 @@ class MainHeadActivity : AppCompatActivity() {
                     )
                     true
                 }
+
                 R.id.nav_pinjaman -> {
                     startActivity(
                         Intent(this@MainHeadActivity, PinjamanActivity::class.java)
                     )
                     true
                 }
-                
+
                 R.id.nav_logout -> {
                     startActivity(
                         Intent(this@MainHeadActivity, LoginActivity::class.java)
                     )
                     true
                 }
+
                 R.id.nav_pengguna -> {
                     sharedPreferences.putBoolean(Constants.KEY_IS_LOGIN, false)
                     startActivity(
@@ -341,12 +406,14 @@ class MainHeadActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_pengajuan ->{
+
+                R.id.nav_pengajuan -> {
                     startActivity(
                         Intent(this@MainHeadActivity, PengajuanActivity::class.java)
                     )
                     true
                 }
+
                 else -> false
             }
         }
