@@ -207,5 +207,24 @@
             android:text="Menunggu Persetujuan"
             android:id="@+id/keterangan"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_main"
+            android:background="@drawable/shape"
+            android:paddingHorizontal="20dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/btnPembayaran"
+            android:paddingVertical="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Halaman Pembayaran"
+                android:layout_centerInParent="true"
+                android:textColor="@color/blue_500"/>
+        </RelativeLayout>
+
+
     </LinearLayout>
 </LinearLayout>

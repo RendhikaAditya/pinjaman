@@ -104,6 +104,7 @@ class NasabahActivity : AppCompatActivity() {
                     }
                 }
                 is Resource.Error -> {
+                    Toast.makeText(this@NasabahActivity, "Nasabah Telah Melakukan pinjaman, Tidak Dapat di hapus", Toast.LENGTH_LONG).show()
                     Log.d("deleteNasabah", " :: Error")
                 }
             }

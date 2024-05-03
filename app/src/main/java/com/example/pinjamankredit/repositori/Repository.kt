@@ -11,7 +11,13 @@ class Repository(
     suspend fun createPengguna(nama:String, username:String, password:String, level:String) = api.creadPengguna(nama, username, password, level)
     suspend fun updatePengguna(id: String, nama:String, username:String, password:String, level:String) = api.updatePengguna(id, nama, username, password, level)
     suspend fun deletePengguna(id:Int)= api.deletePengguna(id)
-//
+
+    suspend fun createbayar(jml:String, kodePp:String, blnBayar:String, nominalBayar:String, status: String) = api.createBayar(jml,kodePp,blnBayar,nominalBayar,status)
+    suspend fun fetchBayar(id:String)= api.fetchBayar(id)
+
+    suspend fun fetchUpdateStatusBayar(id:String, status:String) = api.fetchUpdateStatusBayar(id, status)
+
+    //
     suspend fun fetchNasabah() = api.fetchNasabah()
     suspend fun createNasabah(
         noKtp: String,

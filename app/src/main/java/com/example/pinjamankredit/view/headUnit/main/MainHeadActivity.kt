@@ -63,7 +63,12 @@ class MainHeadActivity : AppCompatActivity() {
         setupObserve()
 
     }
-
+    fun hitungAngsuran(pinjaman: Int, durasi: Int): String {
+        val totalAngsuranPerBulan = (pinjaman * 1.7) / durasi
+        val totalAngsuranPerBulanBulat = Math.round(totalAngsuranPerBulan).toDouble()
+//        return
+        return "${helper.formatRupiah(totalAngsuranPerBulanBulat.toString())}"
+    }
     override fun onResume() {
         super.onResume()
         viewModel.fetchSummary()
@@ -112,6 +117,13 @@ class MainHeadActivity : AppCompatActivity() {
 
                 override fun onClickSetujui(model: PengajuanResponse.Data) {
                     showInputDialog(this@MainHeadActivity, "Berapa dana pinjaman yang bisa diterima?",{ inputText ->
+                        viewModel.fetchCreateBayar(
+                            "${model.lama_ansuran.split(" ").get(0)}",
+                            "${model.kode_pp}",
+                            "1",
+                            "${hitungAngsuran(model.dana_pinjaman_diajukan.toInt(), model.lama_ansuran.split(" ").get(0).toInt())}",
+                            "Belum"
+                        )
                         viewModel.fetchUpdate(model.kode_pp, "Di terima", "Pinjaman Di setujui", "$inputText");
                     })
                 }
@@ -146,6 +158,28 @@ class MainHeadActivity : AppCompatActivity() {
                 }
             }
         })
+
+        viewModel.createBayar.observe(this, androidx.lifecycle.Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    Log.d("bayar", " :: Loading ")
+                }
+                is Resource.Success -> {
+                    Log.d("bayar", " :: response :: ${it.data!!}")
+                    if (it.data.sukses) {
+                        Log.d("bayar", ":: Sukses")
+                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Log.d("bayar", " :: Kosong")
+                        Toast.makeText(this@MainHeadActivity, "${it.data.pesan}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                is Resource.Error -> {
+                    Log.d("bayar", " :: Error")
+                }
+            }
+        })
+
 
         viewModel.fetchSummary()
         viewModel.summary.observe(this, androidx.lifecycle.Observer {

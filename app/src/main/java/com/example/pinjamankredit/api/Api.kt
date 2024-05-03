@@ -1,6 +1,7 @@
 package com.example.pinjamankredit.api
 
 import com.example.pinjamankredit.response.BaseResponse
+import com.example.pinjamankredit.response.BayarResponse
 import com.example.pinjamankredit.response.LoginResponse
 import com.example.pinjamankredit.response.NasabahResponse
 import com.example.pinjamankredit.response.PengajuanResponse
@@ -40,6 +41,12 @@ interface Api {
 //
     @GET("pengguna")
     suspend fun fetchPengguna(): Response<PenggunaResponse>
+
+    @GET("bayar/{id}")
+    suspend fun fetchBayar(@Path("id") id: String): Response<BayarResponse>
+
+    @GET("bayar/status/{id}/{status}")
+    suspend fun fetchUpdateStatusBayar(@Path("id") id: String,@Path("status") status: String): Response<BaseResponse>
 
     @FormUrlEncoded
     @POST("pengguna")
@@ -84,6 +91,17 @@ interface Api {
         @Field("status") status: String
     ): Response<BaseResponse>
 
+
+    @FormUrlEncoded
+    @POST("bayar/{jml}")
+    suspend fun createBayar(
+        @Path("jml") jml : String,
+        @Field("kode_pp") kodepp: String,
+        @Field("bulan_pembayaran") bulanBayar: String,
+        @Field("nominal_bayaran") nominalBayar: String,
+        @Field("status") status: String
+    ): Response<BaseResponse>
+
     @FormUrlEncoded
     @POST("nasabah/{id}")
     suspend fun updateNasabah(
@@ -104,7 +122,6 @@ interface Api {
     suspend fun deleteNasabah(
         @Path("id") id: String
     ): Response<BaseResponse>
-
 
     @GET("pengajuan-peminjaman")
     suspend fun fetchPengajuan(): Response<PengajuanResponse>

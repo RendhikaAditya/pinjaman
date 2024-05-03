@@ -20,6 +20,22 @@ class HeadViewModel(
     val update : MutableLiveData<Resource<BaseResponse>> = MutableLiveData()
     val pengajuan : MutableLiveData<Resource<PengajuanResponse>> = MutableLiveData()
     val summary : MutableLiveData<Resource<SummaryResponse>> = MutableLiveData()
+    val createBayar : MutableLiveData<Resource<BaseResponse>> = MutableLiveData()
+
+    fun fetchCreateBayar(jml: String,
+                    kodePp: String,
+                    blnBayar:String,
+                    nominalBayar:String,
+                         status:String
+    ) = viewModelScope.launch {
+        createBayar.value = Resource.Loading()
+        try {
+            val response = repository.createbayar(jml, kodePp, blnBayar, nominalBayar, status)
+            createBayar.value = Resource.Success(response.body()!!)
+        } catch (e: Exception) {
+            createBayar.value = Resource.Error(e.message.toString())
+        }
+    }
 
     fun fetchSummary() = viewModelScope.launch {
         summary.value = Resource.Loading()

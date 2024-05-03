@@ -13,6 +13,7 @@ import com.example.pinjamankredit.response.PengajuanResponse
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.PdfViewActivity
 import com.example.pinjamankredit.util.ZoomableImageDialog
+import com.example.pinjamankredit.view.bayar.BayarActivity
 
 class DetailPengjuanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPengjuanBinding
@@ -57,6 +58,10 @@ class DetailPengjuanActivity : AppCompatActivity() {
             }
             btnBack.setOnClickListener {
                 finish()
+            }
+
+            btnPembayaran.setOnClickListener {
+                startActivity(Intent(this@DetailPengjuanActivity, BayarActivity::class.java).putExtra("id", data.kode_pp))
             }
         }
     }
