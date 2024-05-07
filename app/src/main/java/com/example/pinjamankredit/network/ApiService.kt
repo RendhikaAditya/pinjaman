@@ -11,6 +11,7 @@ private const val baseUrl = "http://192.30.35.134:8080/api/"
 
 object ApiService {
     const val imageURL = "http://192.30.35.134:8080/uploads/"
+    const val baseURL = "http://192.30.35.134:8080/"
 
     fun getClient(): Api {
 

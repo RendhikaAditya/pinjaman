@@ -50,6 +50,17 @@ class DetailPengjuanActivity : AppCompatActivity() {
                 val imageUrl = "${ApiService.imageURL}${data.foto_unit}"
                 helper.showImageDialog(this@DetailPengjuanActivity, imageUrl, "Foto Unit")
             }
+
+            btnFotoStnk.setOnClickListener {
+                val imageUrl = "${ApiService.imageURL}${data.foto_stnk}"
+                helper.showImageDialog(this@DetailPengjuanActivity, imageUrl, "Foto Stnk")
+            }
+
+            btnFotoBPKP.setOnClickListener {
+                val imageUrl = "${ApiService.imageURL}${data.foto_bpkp}"
+                helper.showImageDialog(this@DetailPengjuanActivity, imageUrl, "Foto Bpkp")
+            }
+
             btnFileForm.setOnClickListener {
                 val pdfIntent = Intent(this@DetailPengjuanActivity, PdfViewActivity::class.java)
                 pdfIntent.putExtra("pdfUrl", "${ApiService.imageURL}${data.berkas_pinjaman}")

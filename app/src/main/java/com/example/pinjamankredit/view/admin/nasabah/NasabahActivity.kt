@@ -2,6 +2,7 @@ package com.example.pinjamankredit.view.admin.nasabah
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -122,6 +123,14 @@ class NasabahActivity : AppCompatActivity() {
 
         binding.btnTambah.setOnClickListener {
             startActivity(Intent(this@NasabahActivity, AddNasabahActivity::class.java).putExtra("edit", false))
+        }
+
+        binding.btnLaporan.setOnClickListener {
+            val url = "${ApiService.baseURL}laporan_nasabah.php"
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+            startActivity(intent)
         }
     }
 

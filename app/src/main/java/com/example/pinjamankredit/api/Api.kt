@@ -142,6 +142,8 @@ interface Api {
         @Field("foto_ktp") fotoKtp : String,
         @Field("foto_kk") fotoKk : String,
         @Field("foto_unit") fotoUnit : String,
+        @Field("foto_stnk") fotoStnk : String,
+        @Field("foto_bpkp") fotoBpkp : String,
         @Field("dana_pinjaman_diajukan") danaPinjamanDiajukan: String,
         @Field("lama_ansuran") lamaAngsuran: String,
         @Field("berkas") berkas:String

@@ -2,6 +2,7 @@ package com.example.pinjamankredit.view.admin.pengguna
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -121,6 +122,13 @@ class PenggunaActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener { finish()}
         binding.btnTambah.setOnClickListener {
             startActivity(Intent(this@PenggunaActivity, AddPenggunaActivity::class.java).putExtra("edit", false))
+        }
+        binding.btnLaporan.setOnClickListener {
+            val url = "${ApiService.baseURL}laporan_pengguna.php"
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+            startActivity(intent)
         }
     }
 

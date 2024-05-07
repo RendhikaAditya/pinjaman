@@ -14,6 +14,8 @@ data class PengajuanResponse(
         val foto_kk: String,
         val foto_ktp: String,
         val foto_unit: String,
+        val foto_stnk: String,
+        val foto_bpkp: String,
         val berkas_pinjaman: String,
         val keterangan: String,
         val kode_nasabah: String,

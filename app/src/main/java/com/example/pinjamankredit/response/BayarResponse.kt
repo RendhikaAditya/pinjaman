@@ -11,6 +11,7 @@ data class BayarResponse(
         val id_bayar: String,
         val kode_pp: String,
         val nominal_bayaran: String,
+        val jatuh_tempo:String,
         val status: String
     )
 }

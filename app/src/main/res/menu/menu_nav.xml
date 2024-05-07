@@ -7,13 +7,13 @@
                 android:icon="@drawable/ic_person"
                 android:title="Nasabah" />
             <item
-                android:id="@+id/nav_pengajuan"
-                android:icon="@drawable/ic_receipt"
-                android:title="Pengajuan" />
-            <item
                 android:id="@+id/nav_pinjaman"
-                android:icon="@drawable/ic_payments"
+                android:icon="@drawable/ic_receipt"
                 android:title="Pinjaman" />
+<!--            <item-->
+<!--                android:id="@+id/nav_pinjaman"-->
+<!--                android:icon="@drawable/ic_payments"-->
+<!--                android:title="Pinjaman" />-->
             <item
                 android:id="@+id/nav_pengguna"
                 android:icon="@drawable/ic_pengguna"

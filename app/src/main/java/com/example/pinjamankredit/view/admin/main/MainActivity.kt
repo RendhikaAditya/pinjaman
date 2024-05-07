@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_pinjaman -> {
                     startActivity(
-                        Intent(this@MainActivity, PinjamanActivity::class.java)
+                        Intent(this@MainActivity, PengajuanActivity::class.java)
                     )
                     true
                 }
@@ -151,12 +151,12 @@ class MainActivity : AppCompatActivity() {
                     )
                     true
                 }
-                R.id.nav_pengajuan ->{
-                    startActivity(
-                        Intent(this@MainActivity, PengajuanActivity::class.java)
-                    )
-                    true
-                }
+//                R.id.nav_pengajuan ->{
+//                    startActivity(
+//                        Intent(this@MainActivity, PengajuanActivity::class.java)
+//                    )
+//                    true
+//                }
                 else -> false
             }
         }

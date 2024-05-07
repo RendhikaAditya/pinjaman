@@ -50,12 +50,21 @@ class PengajuanNasabahActivity : AppCompatActivity() {
         const val REQUEST_IMAGE_CAMERA_UNIT = 105
         const val REQUEST_IMAGE_GALLERY_UNIT = 106
 
+        const val REQUEST_IMAGE_CAMERA_STNK = 107
+        const val REQUEST_IMAGE_GALLERY_STNK = 108
+
+        const val REQUEST_IMAGE_CAMERA_BPKP = 109
+        const val REQUEST_IMAGE_GALLERY_BPKP = 110
+
 
         private const val REQUEST_PDF_FILE = 301
     }
     private var selectedImageKTP: Bitmap? = null
     private var selectedImageKK: Bitmap? = null
     private var selectedImageUnit: Bitmap? = null
+    private var selectedImageStnk: Bitmap? = null
+    private var selectedImageBpkp: Bitmap? = null
+
     private var selectedPdfUri: Uri? = null
 
 
@@ -152,7 +161,6 @@ class PengajuanNasabahActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
     private fun setupObserve() {
         viewModel.pengajuan.observe(this, androidx.lifecycle.Observer {
             when (it) {
@@ -188,14 +196,12 @@ class PengajuanNasabahActivity : AppCompatActivity() {
         return formatter.format(this)
     }
 
-
     private fun setupListener() {
         with(binding){
 
             spPinjaman.onItemSelectedListener = object  : AdapterView.OnItemClickListener,
                 AdapterView.OnItemSelectedListener {
                 override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
                 }
 
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -206,8 +212,6 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                     val pinjamanNum = pinjaman.toString().replace("[^\\d]".toRegex(), "").toInt()
 
                     asuranBulanan.text = ""+hitungAngsuran(pinjamanNum,ansuranNum)
-
-
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -291,7 +295,6 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                 builder.show()
             }
 
-
             imageViewUnit.setOnClickListener {
                 val options = arrayOf("Ambil dari Galeri", "Buka Kamera")
                 val builder = AlertDialog.Builder(this@PengajuanNasabahActivity)
@@ -313,6 +316,49 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                 builder.show()
             }
 
+            imageViewStnk.setOnClickListener {
+                val options = arrayOf("Ambil dari Galeri", "Buka Kamera")
+                val builder = AlertDialog.Builder(this@PengajuanNasabahActivity)
+                builder.setTitle("Pilih Sumber Gambar")
+                builder.setItems(options) { dialog, which ->
+                    when (which) {
+                        0 -> {
+                            // Pilih dari Galeri
+                            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                            startActivityForResult(galleryIntent, REQUEST_IMAGE_GALLERY_STNK)
+                        }
+                        1 -> {
+                            // Buka Kamera
+                            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAMERA_STNK)
+                        }
+                    }
+                }
+                builder.show()
+            }
+
+            imageViewBpkp.setOnClickListener {
+                val options = arrayOf("Ambil dari Galeri", "Buka Kamera")
+                val builder = AlertDialog.Builder(this@PengajuanNasabahActivity)
+                builder.setTitle("Pilih Sumber Gambar")
+                builder.setItems(options) { dialog, which ->
+                    when (which) {
+                        0 -> {
+                            // Pilih dari Galeri
+                            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                            startActivityForResult(galleryIntent, REQUEST_IMAGE_GALLERY_BPKP)
+                        }
+                        1 -> {
+                            // Buka Kamera
+                            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            startActivityForResult(cameraIntent, REQUEST_IMAGE_CAMERA_BPKP)
+                        }
+                    }
+                }
+                builder.show()
+            }
+
+
             btnSelectFile.setOnClickListener {
                 val intent = Intent(Intent.ACTION_GET_CONTENT)
                 intent.type = "application/pdf"
@@ -329,6 +375,8 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                     "${getStringImage(selectedImageKTP)}",
                     "${getStringImage(selectedImageKK)}",
                     "${getStringImage(selectedImageUnit)}",
+                    "${getStringImage(selectedImageStnk)}",
+                    "${getStringImage(selectedImageBpkp)}",
                     "${pinjamanNum}",
                     "${binding.spAnsuran.selectedItem}",
                     "${getFileBase64(selectedPdfUri!!)}"
@@ -423,6 +471,42 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                     val imageBitmap = data.extras?.get("data") as Bitmap
                     selectedImageUnit = imageBitmap
                     binding.imageViewUnit.setImageBitmap(imageBitmap)
+                }
+            }
+
+            REQUEST_IMAGE_GALLERY_STNK -> {
+                if (resultCode == RESULT_OK) {
+                    data?.data?.let { uri ->
+                        val imageBitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                        selectedImageStnk = imageBitmap
+                        binding.imageViewStnk.setImageBitmap(imageBitmap)
+                    }
+                }
+            }
+
+            REQUEST_IMAGE_CAMERA_STNK -> {
+                if (resultCode == RESULT_OK && data?.extras?.containsKey("data") == true) {
+                    val imageBitmap = data.extras?.get("data") as Bitmap
+                    selectedImageStnk = imageBitmap
+                    binding.imageViewStnk.setImageBitmap(imageBitmap)
+                }
+            }
+
+            REQUEST_IMAGE_GALLERY_BPKP -> {
+                if (resultCode == RESULT_OK) {
+                    data?.data?.let { uri ->
+                        val imageBitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                        selectedImageBpkp = imageBitmap
+                        binding.imageViewBpkp.setImageBitmap(imageBitmap)
+                    }
+                }
+            }
+
+            REQUEST_IMAGE_CAMERA_BPKP -> {
+                if (resultCode == RESULT_OK && data?.extras?.containsKey("data") == true) {
+                    val imageBitmap = data.extras?.get("data") as Bitmap
+                    selectedImageBpkp = imageBitmap
+                    binding.imageViewBpkp.setImageBitmap(imageBitmap)
                 }
             }
         }

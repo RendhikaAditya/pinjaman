@@ -67,6 +67,38 @@
             android:id="@+id/btnTambah"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Laporan Penguna" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="20sp"
+            android:drawableTint="@color/gren_500"
+            android:drawableLeft="@drawable/ic_printshop"
+            android:textColor="@color/gren_500"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/gren_200"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/btnLaporan"/>
+    </RelativeLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

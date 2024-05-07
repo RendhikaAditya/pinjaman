@@ -2,6 +2,7 @@ package com.example.pinjamankredit.view.headUnit.main
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -407,10 +408,13 @@ class MainHeadActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.nav_pengajuan -> {
-                    startActivity(
-                        Intent(this@MainHeadActivity, PengajuanActivity::class.java)
-                    )
+                R.id.nav_laporan -> {
+                    // URL yang akan dibuka
+                    val url = "${ApiService.baseURL}laporan.php"
+
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+                    startActivity(intent)
                     true
                 }
 

@@ -159,6 +159,50 @@
                     android:textColor="@color/blue_500"/>
             </RelativeLayout>
 
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/btnFotoStnk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_main"
+                android:background="@drawable/shape"
+                android:paddingHorizontal="20dp"
+                android:layout_marginRight="16dp"
+                android:paddingVertical="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto STNK"
+                    android:textColor="@color/blue_500"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_main"
+                android:background="@drawable/shape"
+                android:paddingHorizontal="20dp"
+                android:layout_marginRight="16dp"
+                android:id="@+id/btnFotoBPKP"
+                android:paddingVertical="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto BPKP"
+                    android:textColor="@color/blue_500"/>
+            </RelativeLayout>
+
+
+
         </LinearLayout>
 
         <TextView

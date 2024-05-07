@@ -31,6 +31,7 @@ class BayarAdapter(
         var helper = Helper()
         var sharedPreferences = SharedPreferences(holder.itemView.context)
 
+        holder.binding.txtJatuhtempo.text = helper.ubahFormatTanggal(model.jatuh_tempo)
         if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("Unit Head")){
             holder.binding.layoutBtnHead.visibility = View.VISIBLE
             holder.binding.layoutBtnNasabah.visibility = View.GONE

@@ -96,6 +96,36 @@
                     android:focusable="true"
                     android:contentDescription="Pilih Gambar"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah foto Stnk"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/imageViewStnk"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeimg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Pilih Gambar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah foto BPKP"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/imageViewBpkp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/placeimg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="Pilih Gambar"/>
+
 
 
 

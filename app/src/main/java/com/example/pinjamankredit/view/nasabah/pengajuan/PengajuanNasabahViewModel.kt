@@ -23,13 +23,15 @@ class PengajuanNasabahViewModel(
         fotoKtp : String,
         fotoKk : String,
         fotoUnit : String,
+        fotoStnk : String,
+        fotoBpkp : String,
         danaPinjamanDiajukan: String,
         lamaAngsuran: String,
         berkas:String
     ) = viewModelScope.launch {
         pengajuan.value = Resource.Loading()
         try {
-            val response = repository.fetchPengajuanNasabah(kodeNasabah, fotoKtp, fotoKk, fotoUnit, danaPinjamanDiajukan, lamaAngsuran, berkas)
+            val response = repository.fetchPengajuanNasabah(kodeNasabah, fotoKtp, fotoKk, fotoUnit, fotoStnk, fotoBpkp, danaPinjamanDiajukan, lamaAngsuran, berkas)
             pengajuan.value = Resource.Success(response.body()!!)
         } catch (e: Exception) {
             pengajuan.value = Resource.Error(e.message.toString())

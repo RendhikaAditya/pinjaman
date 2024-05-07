@@ -57,10 +57,12 @@ class Repository(
         fotoKtp : String,
         fotoKk : String,
         fotoUnit : String,
+        fotoStnk : String,
+        fotoBpkp : String,
         danaPinjamanDiajukan: String,
         lamaAngsuran: String,
         berkas:String
-    ) = api.createPengajuanPeminjaman(kodeNasabah, fotoKtp, fotoKk, fotoUnit, danaPinjamanDiajukan, lamaAngsuran, berkas)
+    ) = api.createPengajuanPeminjaman(kodeNasabah, fotoKtp, fotoKk, fotoUnit, fotoStnk, fotoBpkp, danaPinjamanDiajukan, lamaAngsuran, berkas)
 
     suspend fun fetchUpdateStatus(
         id: String,

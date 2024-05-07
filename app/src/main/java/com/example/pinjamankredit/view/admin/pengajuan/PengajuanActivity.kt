@@ -2,6 +2,7 @@ package com.example.pinjamankredit.view.admin.pengajuan
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -98,6 +99,13 @@ class PengajuanActivity : AppCompatActivity() {
 
     private fun setupListener() {
         binding.btnBack.setOnClickListener { finish() }
+        binding.btnDownload.setOnClickListener {
+            val url = "${ApiService.baseURL}laporan.php"
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+            startActivity(intent)
+        }
     }
     fun showPengajuanDataDialog(context: Context, data: PengajuanResponse.Data) {
         val dialogView = TextView(context).apply {
