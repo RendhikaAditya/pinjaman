@@ -46,22 +46,83 @@
             android:text="Unduh Laporan"
             android:layout_margin="16dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/downloadLayout"
+            android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
-            android:drawableLeft="@drawable/ic_printshop"
-            android:drawableTint="@color/gren_500"
-            android:textSize="20sp"
-            android:textColor="@color/gren_500"
-            android:background="@drawable/shape"
-            android:backgroundTint="@color/gren_200"
-            android:paddingHorizontal="45dp"
-            android:paddingVertical="2dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
             android:layout_centerVertical="true"
-            android:id="@+id/btnDownload"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/gren_200">
+
+            <TextView
+                android:id="@+id/downloadText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_printshop"
+                android:drawableTint="@color/gren_500"
+                android:textSize="20sp"
+                android:textColor="@color/gren_500"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/gren_200"
+                android:paddingHorizontal="45dp"
+                android:paddingVertical="2dp"
+                android:gravity="center" />
+
+
+
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                android:backgroundTint="@color/blue_500"
+                android:progressBackgroundTint="@color/blue_500"
+                android:progressTint="@android:color/white"/>
+
+
+
+
+            <TextView
+                android:id="@+id/openButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buka File"
+                android:visibility="gone"
+                android:paddingHorizontal="10dp"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:background="@drawable/shape"
+                android:backgroundTint="@color/gray"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
+
+
     </RelativeLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:drawableLeft="@drawable/ic_printshop"
+        android:drawableTint="@color/gren_500"
+        android:textSize="20sp"
+        android:textColor="@color/gren_500"
+        android:background="@drawable/shape"
+        android:backgroundTint="@color/gren_200"
+        android:paddingHorizontal="45dp"
+        android:paddingVertical="2dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/btnDownload"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

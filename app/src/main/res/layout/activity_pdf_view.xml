@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -17,6 +17,7 @@
             android:src="@drawable/ic_back"
             android:layout_gravity="center"
             android:id="@+id/btnBack"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
             app:tint="@color/black" />
 
@@ -25,11 +26,29 @@
             android:layout_height="wrap_content"
             android:text="Form Pengajuan"
             android:id="@+id/title"
+            android:layout_toRightOf="@id/btnBack"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"/>
-    </LinearLayout>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/btnDownload"
+            android:backgroundTint="@color/gren_500"
+            android:background="@drawable/shape"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="20dp"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="16dp"
+            android:drawableLeft="@drawable/ic_printshop"
+            android:drawableTint="@color/white"
+            android:layout_height="wrap_content"
+            android:onClick="downloadPDF"/>
+
+    </RelativeLayout>
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"

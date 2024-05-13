@@ -1,9 +1,14 @@
 package com.example.pinjamankredit.util
 
+import android.app.DownloadManager
+import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.example.pinjamankredit.R
@@ -28,6 +33,19 @@ class PdfViewActivity : AppCompatActivity() {
 
        loadPDF(pdfUrl+"")
         binding.btnBack.setOnClickListener { finish() }
+        binding.btnDownload.setOnClickListener { downloadPDF() }
+    }
+    fun downloadPDF() {
+        val pdfUrl = intent.getStringExtra("pdfUrl")
+        val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val downloadUri = Uri.parse(pdfUrl)
+        val request = DownloadManager.Request(downloadUri)
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+        request.setTitle("PDF Download")
+        request.setDescription("Downloading PDF file...")
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "file_laporan.pdf")
+        downloadManager.enqueue(request)
     }
 
     private fun loadPDF(url: String) {

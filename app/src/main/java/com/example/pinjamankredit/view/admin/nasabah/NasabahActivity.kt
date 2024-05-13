@@ -16,6 +16,7 @@ import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.NasabahResponse
+import com.example.pinjamankredit.util.PdfViewActivity
 import com.example.pinjamankredit.util.SharedPreferences
 
 class NasabahActivity : AppCompatActivity() {
@@ -128,7 +129,8 @@ class NasabahActivity : AppCompatActivity() {
         binding.btnLaporan.setOnClickListener {
             val url = "${ApiService.baseURL}laporan_nasabah.php"
 
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
+            val intent = Intent(this@NasabahActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url)
 
             startActivity(intent)
         }
