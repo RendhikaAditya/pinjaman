@@ -148,7 +148,6 @@ class NasabahActivity : AppCompatActivity() {
                     append("Kode Nasabah: ${data.kode_nasabah}\n")
                     append("No. KTP: ${data.no_ktp}\n")
                     append("Pekerjaan: ${data.pekerjaan}\n")
-                    append("Status: ${data.status}\n")
                     append("Telepon: ${data.telpon}\n")
                     append("Tanggal Lahir: ${data.tgl_lahir}\n\n")
             }
