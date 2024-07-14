@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.BaseResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.response.PenggunaResponse
 import com.example.pinjamankredit.response.PinjamanResponse
 import kotlinx.coroutines.launch

@@ -12,7 +12,7 @@ import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.BayarResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.SharedPreferences
 import com.example.pinjamankredit.view.headUnit.main.HeadViewModel

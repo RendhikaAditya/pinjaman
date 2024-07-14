@@ -4,9 +4,13 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.pinjamankredit.R
@@ -44,6 +48,33 @@ class    RegisterActivity : AppCompatActivity() {
         setupListener()
         setupViewModel()
         setupObserver()
+    }
+
+
+    private fun validateEmail(editText: EditText) {
+        val email = editText.text.toString()
+        if (!isValidEmail(email)) {
+            editText.error = "Email tidak valid"
+        } else {
+            editText.error = null
+        }
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun validateNik(editText: EditText) {
+        val nik = editText.text.toString()
+        if (!isValidNik(nik)) {
+            editText.error = "NIK harus 16 digit angka"
+        } else {
+            editText.error = null
+        }
+    }
+
+    private fun isValidNik(nik: String): Boolean {
+        return nik.length == 16 && nik.all { it.isDigit() }
     }
 
     private fun setupObserver() {
@@ -102,7 +133,26 @@ class    RegisterActivity : AppCompatActivity() {
         }
 
         binding.tglLahir.setOnClickListener { showDatePickerDialog() }
+        binding.noKtp.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                validateNik(binding.noKtp)
+            }
+        })
+
+        binding.email.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(p0: Editable?) {
+                validateEmail(binding.email)
+            }
+
+        })
     }
 
     private fun showDatePickerDialog() {

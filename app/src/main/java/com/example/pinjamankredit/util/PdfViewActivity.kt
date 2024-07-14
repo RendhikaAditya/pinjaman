@@ -34,6 +34,7 @@ class PdfViewActivity : AppCompatActivity() {
        loadPDF(pdfUrl+"")
         binding.btnBack.setOnClickListener { finish() }
         binding.btnDownload.setOnClickListener { downloadPDF() }
+        binding.title.text = intent.getStringExtra("title")
     }
     fun downloadPDF() {
         val pdfUrl = intent.getStringExtra("pdfUrl")

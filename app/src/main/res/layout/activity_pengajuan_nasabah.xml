@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".view.nasabah.pengajuan.PengajuanNasabahActivity">
-
 
 
     <LinearLayout
@@ -17,116 +15,121 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/s"
+            android:orientation="horizontal"
             android:translationZ="10dp">
 
             <ImageView
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back"
                 android:layout_gravity="center"
-                android:id="@+id/btnBack"
                 android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_back"
                 app:tint="@color/black" />
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Penajuan Peminjaman"
-                android:id="@+id/title"
                 android:layout_gravity="center"
-                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:text="Penajuan Peminjaman"
                 android:textColor="@color/black"
-                android:layout_marginLeft="10dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_margin="16dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah foto KTP"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/imageViewKTP"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/placeimg"
                     android:clickable="true"
+                    android:contentDescription="Pilih Gambar"
                     android:focusable="true"
-                    android:contentDescription="Pilih Gambar"/>
+                    android:src="@drawable/placeimg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah foto KK"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/imageViewKK"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/placeimg"
                     android:clickable="true"
+                    android:contentDescription="Pilih Gambar"
                     android:focusable="true"
-                    android:contentDescription="Pilih Gambar"/>
+                    android:src="@drawable/placeimg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah foto unit"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/imageViewUnit"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/placeimg"
                     android:clickable="true"
+                    android:contentDescription="Pilih Gambar"
                     android:focusable="true"
-                    android:contentDescription="Pilih Gambar"/>
+                    android:src="@drawable/placeimg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah foto Stnk"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/imageViewStnk"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/placeimg"
                     android:clickable="true"
+                    android:contentDescription="Pilih Gambar"
                     android:focusable="true"
-                    android:contentDescription="Pilih Gambar"/>
+                    android:src="@drawable/placeimg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tambah foto BPKP"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/imageViewBpkp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/placeimg"
                     android:clickable="true"
+                    android:contentDescription="Pilih Gambar"
                     android:focusable="true"
-                    android:contentDescription="Pilih Gambar"/>
-
-
+                    android:src="@drawable/placeimg" />
 
 
                 <TextView
@@ -134,16 +137,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Pinjaman :"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <Spinner
                     android:id="@+id/spPinjaman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_stroke"
                     android:entries="@array/pinjaman"
                     android:paddingHorizontal="5dp"
-                    android:layout_marginBottom="10dp"
                     android:paddingVertical="10dp" />
 
                 <TextView
@@ -151,46 +155,55 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Lama Ansuran :"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <Spinner
                     android:id="@+id/spAnsuran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_stroke"
                     android:entries="@array/ansuran"
                     android:paddingHorizontal="5dp"
-                    android:layout_marginBottom="10dp"
                     android:paddingVertical="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Ansuran Perbulan : "/>
+                    android:text="Ansuran Perbulan : "
+                    android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/asuranBulanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp.0"
-                    android:id="@+id/asuranBulanan"
-                    android:textSize="24sp"/>
+                    android:textSize="24sp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Unduh Berkas :"
-                    android:textColor="@color/black"/>
+                    android:text="Bunga Ansuran :"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="70%"
+                    android:textSize="24sp" />
+
                 <RelativeLayout
                     android:id="@+id/downloadLayout"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/shape"
-                    android:backgroundTint="@color/blue_500">
+                    android:backgroundTint="@color/blue_500"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/downloadText"
@@ -206,37 +219,33 @@
                         android:textColor="@color/white" />
 
 
-
                     <ProgressBar
                         android:id="@+id/progressBar"
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:indeterminate="true"
-                        android:visibility="gone"
                         android:backgroundTint="@color/blue_500"
+                        android:indeterminate="true"
                         android:progressBackgroundTint="@color/blue_500"
-                        android:progressTint="@android:color/white"/>
-
-
+                        android:progressTint="@android:color/white"
+                        android:visibility="gone" />
 
 
                     <TextView
                         android:id="@+id/openButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Buka File"
-                        android:visibility="gone"
-                        android:gravity="center"
-                        android:paddingVertical="12dp"
+                        android:layout_centerInParent="true"
                         android:background="@drawable/shape"
                         android:backgroundTint="@color/gray"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"/>
+                        android:gravity="center"
+                        android:paddingVertical="12dp"
+                        android:text="Buka File"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
-
 
 
                 <TextView
@@ -244,36 +253,295 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Upload Berkas :"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
 
 
-                    <RelativeLayout
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/btnSelectFile"
+                <RelativeLayout
+                    android:id="@+id/btnSelectFile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape"
+                    android:backgroundTint="@color/blue_500"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtFileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:paddingVertical="10dp"
+                        android:text="Select File"
+                        android:textColor="@color/white" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:src="@drawable/ic_upload_24"
+                        app:tint="@color/white" />
+                </RelativeLayout>
+
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Data Pasangan -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Data Pasangan"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape"
-                        android:backgroundTint="@color/blue_500">
-                        <TextView
-                            android:id="@+id/txtFileName"
-                            android:layout_centerInParent="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Select File"
-                            android:textColor="@color/white"
-                            android:gravity="center"
-                            android:paddingVertical="10dp"/>
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_upload_24"
-                            android:layout_centerVertical="true"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_alignParentRight="true"
-                            app:tint="@color/white" />
-                    </RelativeLayout>
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nama_pasangan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nama"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nik_pasangan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="NIK"
+                            android:inputType="number"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/no_hp_pasangan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="No HP"
+                            android:inputType="phone"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_pasangan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Data Pekerjaan -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Data Pekerjaan"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/pekerjaan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Pekerjaan"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/alamat_kantor"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Alamat Kantor"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/no_telpon_kantor"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="No Telpon Kantor"
+                            android:inputType="phone"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Data Keluarga -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Data Keluarga"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nama_keluarga"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nama"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/hubungan_keluarga"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Hubungan"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/alamat_keluarga"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Alamat"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/no_hp_keluarga"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="No HP"
+                            android:inputType="phone"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Data Penghasilan -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Data Penghasilan"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/penghasilan_bersih"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Penghasilan Bersih"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/penghasilan_pasangan"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Penghasilan Pasangan"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
 
                 <RelativeLayout
@@ -302,6 +570,7 @@
                         android:translationZ="10dp"
                         android:visibility="gone" />
                 </RelativeLayout>
+
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import kotlinx.coroutines.launch
 
 class NasabahViewModel(

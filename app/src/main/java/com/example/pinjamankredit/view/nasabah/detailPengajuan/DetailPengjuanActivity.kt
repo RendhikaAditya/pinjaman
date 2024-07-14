@@ -9,7 +9,8 @@ import com.example.pinjamankredit.R
 import com.example.pinjamankredit.api.Api
 import com.example.pinjamankredit.databinding.ActivityDetailPengjuanBinding
 import com.example.pinjamankredit.network.ApiService
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
+import android.view.View
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.PdfViewActivity
 import com.example.pinjamankredit.util.ZoomableImageDialog
@@ -37,6 +38,27 @@ class DetailPengjuanActivity : AppCompatActivity() {
             danaPengajuan.text = helper.formatRupiah(data.dana_pinjaman_diajukan)
             pinjamanDiterima.text = helper.formatRupiah(data.dana_pinjaman_diterima)
             status.text = data.status_pengajuan
+            binding.namaPasangan.text = data.nama_pasangan
+            binding.nikPasangan.text = data.nik_pasangan
+            binding.noHpPasangan.text = data.no_hp_pasangan
+            binding.emailPasangan.text = data.email_pasangan
+
+            binding.pekerjaan.text = data.pekerjaan
+            binding.alamatKantor.text = data.alamat_kantor
+            binding.noTelponKantor.text = data.no_telpon_kantor
+
+            binding.namaKeluarga.text = data.nama_keluarga
+            binding.hubunganKeluarga.text = data.hubungan_keluarga
+            binding.alamatKeluarga.text = data.alamat_keluarga
+            binding.noHpKeluarga.text = data.no_hp_keluarga
+
+            binding.penghasilanBersih.text = helper.formatRupiah(data.penghasilan_bersih)
+            binding.penghasilanPasangan.text = helper.formatRupiah(data.penghasilan_pasangan)
+            if (data.status_pengajuan=="Di terima"){
+                btnPembayaran.visibility = View.VISIBLE
+            }else{
+                btnPembayaran.visibility = View.GONE
+            }
             keterangan.text = data.keterangan
             btnFotoKTP.setOnClickListener {
                 val imageUrl = "${ApiService.imageURL}${data.foto_ktp}"
@@ -61,12 +83,7 @@ class DetailPengjuanActivity : AppCompatActivity() {
                 helper.showImageDialog(this@DetailPengjuanActivity, imageUrl, "Foto Bpkp")
             }
 
-            btnFileForm.setOnClickListener {
-                val pdfIntent = Intent(this@DetailPengjuanActivity, PdfViewActivity::class.java)
-                pdfIntent.putExtra("pdfUrl", "${ApiService.imageURL}${data.berkas_pinjaman}")
-                startActivity(pdfIntent)
 
-            }
             btnBack.setOnClickListener {
                 finish()
             }

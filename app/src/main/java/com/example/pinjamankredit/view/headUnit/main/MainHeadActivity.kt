@@ -1,5 +1,6 @@
 package com.example.pinjamankredit.view.headUnit.main
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -23,7 +25,7 @@ import com.example.pinjamankredit.databinding.ActivityMainHeadBinding
 import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Constants
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.SharedPreferences
@@ -158,7 +160,13 @@ class MainHeadActivity : AppCompatActivity() {
 
                 override fun onClickTolak(model: PengajuanResponse.Data) {
                     showRejectLoanDialog(this@MainHeadActivity, {
-                        viewModel.fetchUpdate(model.kode_pp, "Di tolak", "Pijaman Ditolak", "0")
+                        showDialogText(
+                            this@MainHeadActivity,
+                            "Tolak Pengajuan",
+                            "Berikan keterangan penolakan"
+                        ){ keterangan ->
+                            viewModel.fetchUpdate(model.kode_pp, "Di tolak", "$keterangan", "0")
+                        }
                     })
                 }
             }
@@ -256,7 +264,33 @@ class MainHeadActivity : AppCompatActivity() {
             }
         })
     }
+    fun showDialogText(context: Context, title: String, hint: String, onPositiveClick: (String) -> Unit) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
 
+        // Setup the input
+        val input = EditText(context)
+        input.hint = hint
+
+        // Set up the layout parameters for the EditText
+        val lp = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        input.layoutParams = lp
+        builder.setView(input)
+
+        // Set up the buttons
+        builder.setPositiveButton("OK") { dialog, _ ->
+            onPositiveClick(input.text.toString())
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.cancel()
+        }
+
+        builder.show()
+    }
     fun showInputDialog(
         context: Context,
         title: String,

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pinjamankredit.databinding.RowBayarBinding
 import com.example.pinjamankredit.databinding.RowPersetujuanBinding
 import com.example.pinjamankredit.response.BayarResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Constants
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.SharedPreferences
@@ -31,7 +31,9 @@ class BayarAdapter(
         var helper = Helper()
         var sharedPreferences = SharedPreferences(holder.itemView.context)
 
-        holder.binding.txtJatuhtempo.text = helper.ubahFormatTanggal(model.jatuh_tempo)
+        if (model.jatuh_tempo!=null){
+            holder.binding.txtJatuhtempo.text = helper.ubahFormatTanggal(model.jatuh_tempo)
+        }
         if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("Unit Head")){
             holder.binding.layoutBtnHead.visibility = View.VISIBLE
             holder.binding.layoutBtnNasabah.visibility = View.GONE
@@ -46,6 +48,22 @@ class BayarAdapter(
                 }
                 "Diterima" -> {
                     holder.binding.layoutBtnHead.visibility = View.GONE
+                    holder.binding.icDone.visibility = View.VISIBLE
+                }
+            }
+        }else if (sharedPreferences.getString(Constants.KEY_LEVEL).equals("Admin")){
+            holder.binding.layoutBtnHead.visibility = View.GONE
+            holder.binding.layoutBtnNasabah.visibility = View.GONE
+            when (model.status) {
+                "Belum" -> {
+                    holder.binding.icDone.visibility = View.GONE
+                }
+                "Bayar" -> {
+                    holder.binding.btnBayar.visibility = View.GONE
+                    holder.binding.icDone.visibility = View.GONE
+                }
+                "Diterima" -> {
+                    holder.binding.btnBayar.visibility = View.GONE
                     holder.binding.icDone.visibility = View.VISIBLE
                 }
             }

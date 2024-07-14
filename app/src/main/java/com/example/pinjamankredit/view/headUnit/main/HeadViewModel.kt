@@ -8,7 +8,7 @@ import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.BaseResponse
 import com.example.pinjamankredit.response.LoginResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.response.SummaryResponse
 
 import kotlinx.coroutines.launch

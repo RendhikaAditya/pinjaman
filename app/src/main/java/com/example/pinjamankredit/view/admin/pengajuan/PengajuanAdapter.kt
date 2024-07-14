@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pinjamankredit.databinding.RowDataBinding
 import com.example.pinjamankredit.response.NasabahResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Helper
 
 class PengajuanAdapter(

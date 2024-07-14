@@ -380,7 +380,20 @@ class PengajuanNasabahActivity : AppCompatActivity() {
                     "${getStringImage(selectedImageBpkp)}",
                     "${pinjamanNum}",
                     "${binding.spAnsuran.selectedItem}",
-                    "${getFileBase64(selectedPdfUri!!)}"
+                    "null",
+                    "${binding.namaPasangan.text}",
+                    "${binding.nikPasangan.text}",
+                    "${binding.noHpPasangan.text}",
+                    "${emailPasangan.text}",
+                    "${pekerjaan.text}",
+                    "${alamatKantor.text}",
+                    "${noTelponKantor.text}",
+                    "${namaKeluarga.text}",
+                    "${hubunganKeluarga.text}",
+                    "${alamatKeluarga.text}",
+                    "${noHpKeluarga.text}",
+                    "${penghasilanBersih.text}",
+                    "${penghasilanPasangan.text}"
                 )
 
 

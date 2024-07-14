@@ -1,4 +1,6 @@
 package com.example.pinjamankredit.view.headUnit.main
+import com.example.pinjamankredit.util.Helper
+
 
 import android.os.Build
 import android.view.LayoutInflater
@@ -7,9 +9,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pinjamankredit.databinding.RowPersetujuanBinding
-import com.example.pinjamankredit.response.PengajuanResponse
-import com.example.pinjamankredit.util.Helper
-
+import PengajuanResponse
 class PengajuanHeadAdapter(
     var datas: ArrayList<PengajuanResponse.Data>,
     var listener: OnAdapterListener
@@ -45,7 +45,7 @@ class PengajuanHeadAdapter(
         }
         holder.binding.tglPengajuan.text = helper.ubahFormatTanggal(model.tgl_pengajuan)
         holder.binding.lamaAnsuran.text = model.lama_ansuran
-
+        holder.binding.txtKeterangan.text = model.keterangan
         holder.itemView.setOnClickListener {
             listener.onClick(model)
         }

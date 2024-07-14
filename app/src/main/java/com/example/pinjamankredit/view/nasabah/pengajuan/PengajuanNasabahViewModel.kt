@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.BaseResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import kotlinx.coroutines.launch
 
 class PengajuanNasabahViewModel(
@@ -20,23 +20,60 @@ class PengajuanNasabahViewModel(
 
     fun fetchPengajuan(
         kodeNasabah: String,
-        fotoKtp : String,
-        fotoKk : String,
-        fotoUnit : String,
-        fotoStnk : String,
-        fotoBpkp : String,
+        fotoKtp: String,
+        fotoKk: String,
+        fotoUnit: String,
+        fotoStnk: String,
+        fotoBpkp: String,
         danaPinjamanDiajukan: String,
         lamaAngsuran: String,
-        berkas:String
+        berkas: String,
+        namaPasangan: String,
+        nikPasangan: String,
+        noHpPasangan: String,
+        emailPasangan: String,
+        pekerjaan: String,
+        alamatKantor: String,
+        noTelponKantor: String,
+        namaKeluarga: String,
+        hubunganKeluarga: String,
+        alamatKeluarga: String,
+        noHpKeluarga: String,
+        penghasilanBersih: String,
+        penghasilanPasangan: String
     ) = viewModelScope.launch {
         pengajuan.value = Resource.Loading()
         try {
-            val response = repository.fetchPengajuanNasabah(kodeNasabah, fotoKtp, fotoKk, fotoUnit, fotoStnk, fotoBpkp, danaPinjamanDiajukan, lamaAngsuran, berkas)
+            val response = repository.fetchPengajuanNasabah(
+                kodeNasabah,
+                fotoKtp,
+                fotoKk,
+                fotoUnit,
+                fotoStnk,
+                fotoBpkp,
+                danaPinjamanDiajukan,
+                lamaAngsuran,
+                berkas,
+                namaPasangan,
+                nikPasangan,
+                noHpPasangan,
+                emailPasangan,
+                pekerjaan,
+                alamatKantor,
+                noTelponKantor,
+                namaKeluarga,
+                hubunganKeluarga,
+                alamatKeluarga,
+                noHpKeluarga,
+                penghasilanBersih,
+                penghasilanPasangan
+            )
             pengajuan.value = Resource.Success(response.body()!!)
         } catch (e: Exception) {
             pengajuan.value = Resource.Error(e.message.toString())
         }
     }
+
 
 //
 //    fun createPengguna(nama:String, username:String, password:String, level:String) = viewModelScope.launch {

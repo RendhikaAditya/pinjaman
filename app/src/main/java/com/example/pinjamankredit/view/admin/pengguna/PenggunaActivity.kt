@@ -127,7 +127,7 @@ class PenggunaActivity : AppCompatActivity() {
         binding.btnLaporan.setOnClickListener {
             val url = "${ApiService.baseURL}laporan_pengguna.php"
 
-            val intent = Intent(this@PenggunaActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url)
+            val intent = Intent(this@PenggunaActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url).putExtra("title", "Data Pengguna")
 
             startActivity(intent)
         }

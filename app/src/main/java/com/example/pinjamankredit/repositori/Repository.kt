@@ -54,15 +54,51 @@ class Repository(
 
     suspend fun fetchPengajuanNasabah(
         kodeNasabah: String,
-        fotoKtp : String,
-        fotoKk : String,
-        fotoUnit : String,
-        fotoStnk : String,
-        fotoBpkp : String,
+        fotoKtp: String,
+        fotoKk: String,
+        fotoUnit: String,
+        fotoStnk: String,
+        fotoBpkp: String,
         danaPinjamanDiajukan: String,
         lamaAngsuran: String,
-        berkas:String
-    ) = api.createPengajuanPeminjaman(kodeNasabah, fotoKtp, fotoKk, fotoUnit, fotoStnk, fotoBpkp, danaPinjamanDiajukan, lamaAngsuran, berkas)
+        berkas: String,
+        namaPasangan: String,
+        nikPasangan: String,
+        noHpPasangan: String,
+        emailPasangan: String,
+        pekerjaan: String,
+        alamatKantor: String,
+        noTelponKantor: String,
+        namaKeluarga: String,
+        hubunganKeluarga: String,
+        alamatKeluarga: String,
+        noHpKeluarga: String,
+        penghasilanBersih: String,
+        penghasilanPasangan: String
+    ) = api.createPengajuanPeminjaman(
+        kodeNasabah,
+        fotoKtp,
+        fotoKk,
+        fotoUnit,
+        fotoStnk,
+        fotoBpkp,
+        danaPinjamanDiajukan,
+        lamaAngsuran,
+        berkas,
+        namaPasangan,
+        nikPasangan,
+        noHpPasangan,
+        emailPasangan,
+        pekerjaan,
+        alamatKantor,
+        noTelponKantor,
+        namaKeluarga,
+        hubunganKeluarga,
+        alamatKeluarga,
+        noHpKeluarga,
+        penghasilanBersih,
+        penghasilanPasangan
+    )
 
     suspend fun fetchUpdateStatus(
         id: String,

@@ -1,10 +1,10 @@
 package com.example.pinjamankredit.api
 
+import PengajuanResponse
 import com.example.pinjamankredit.response.BaseResponse
 import com.example.pinjamankredit.response.BayarResponse
 import com.example.pinjamankredit.response.LoginResponse
 import com.example.pinjamankredit.response.NasabahResponse
-import com.example.pinjamankredit.response.PengajuanResponse
 import com.example.pinjamankredit.response.PenggunaResponse
 import com.example.pinjamankredit.response.PinjamanResponse
 import com.example.pinjamankredit.response.SummaryResponse
@@ -139,15 +139,28 @@ interface Api {
     @POST("pengajuan-nasabah/create")
     suspend fun createPengajuanPeminjaman(
         @Field("kode_nasabah") kodeNasabah: String,
-        @Field("foto_ktp") fotoKtp : String,
-        @Field("foto_kk") fotoKk : String,
-        @Field("foto_unit") fotoUnit : String,
-        @Field("foto_stnk") fotoStnk : String,
-        @Field("foto_bpkp") fotoBpkp : String,
+        @Field("foto_ktp") fotoKtp: String,
+        @Field("foto_kk") fotoKk: String,
+        @Field("foto_unit") fotoUnit: String,
+        @Field("foto_stnk") fotoStnk: String,
+        @Field("foto_bpkp") fotoBpkp: String,
         @Field("dana_pinjaman_diajukan") danaPinjamanDiajukan: String,
         @Field("lama_ansuran") lamaAngsuran: String,
-        @Field("berkas") berkas:String
-    ):Response<BaseResponse>
+        @Field("berkas") berkas: String,
+        @Field("nama_pasangan") namaPasangan: String,
+        @Field("nik_pasangan") nikPasangan: String,
+        @Field("no_hp_pasangan") noHpPasangan: String,
+        @Field("email_pasangan") emailPasangan: String,
+        @Field("pekerjaan") pekerjaan: String,
+        @Field("alamat_kantor") alamatKantor: String,
+        @Field("no_telpon_kantor") noTelponKantor: String,
+        @Field("nama_keluarga") namaKeluarga: String,
+        @Field("hubungan_keluarga") hubunganKeluarga: String,
+        @Field("alamat_keluarga") alamatKeluarga: String,
+        @Field("no_hp_keluarga") noHpKeluarga: String,
+        @Field("penghasilan_bersih") penghasilanBersih: String,
+        @Field("penghasilan_pasangan") penghasilanPasangan: String
+    ): Response<BaseResponse>
 
     @FormUrlEncoded
     @POST("update-pengajuan/{id}")

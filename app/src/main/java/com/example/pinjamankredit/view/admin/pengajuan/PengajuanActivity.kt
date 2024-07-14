@@ -23,7 +23,7 @@ import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
 import com.example.pinjamankredit.response.NasabahResponse
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.PdfViewActivity
 import com.example.pinjamankredit.util.SharedPreferences
@@ -31,6 +31,7 @@ import com.example.pinjamankredit.view.admin.nasabah.AddNasabahActivity
 import com.example.pinjamankredit.view.admin.nasabah.NasabahAdapter
 import com.example.pinjamankredit.view.admin.nasabah.NasabahViewModel
 import com.example.pinjamankredit.view.admin.nasabah.NasabahViewModelFactory
+import com.example.pinjamankredit.view.nasabah.detailPengajuan.DetailPengjuanActivity
 import java.io.File
 
 class PengajuanActivity : AppCompatActivity() {
@@ -88,7 +89,7 @@ class PengajuanActivity : AppCompatActivity() {
                 }
 
                 override fun onClickShow(result: PengajuanResponse.Data) {
-                    showPengajuanDataDialog(this@PengajuanActivity, result)
+                    startActivity(Intent(this@PengajuanActivity, DetailPengjuanActivity::class.java).putExtra("data", result))
                 }
 
                 override fun onClickEdit(result: PengajuanResponse.Data) {
@@ -114,7 +115,7 @@ class PengajuanActivity : AppCompatActivity() {
         binding.downloadLayout.setOnClickListener {
             val url = "${ApiService.baseURL}laporan.php"
 
-            val intent = Intent(this@PengajuanActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url)
+            val intent = Intent(this@PengajuanActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url).putExtra("title", "Data Pengajuan")
 
             startActivity(intent)
 //            startDownload()

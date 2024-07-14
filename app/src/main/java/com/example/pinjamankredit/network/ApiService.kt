@@ -7,11 +7,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val baseUrl = "http://192.30.35.59:8080/api/"
+private const val baseUrl = "http://192.30.35.208:8080/api/"
 
 object ApiService {
-    const val imageURL = "http://192.30.35.59:8080/uploads/"
-    const val baseURL = "http://192.30.35.59:8080/"
+    const val imageURL = "http://192.30.35.208:8080/uploads/"
+    const val baseURL = "http://192.30.35.208:8080/"
 
     fun getClient(): Api {
 

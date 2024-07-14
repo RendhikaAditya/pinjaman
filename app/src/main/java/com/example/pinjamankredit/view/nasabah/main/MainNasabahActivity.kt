@@ -12,7 +12,7 @@ import com.example.pinjamankredit.databinding.ActivityMainNasabahBinding
 import com.example.pinjamankredit.network.ApiService
 import com.example.pinjamankredit.network.Resource
 import com.example.pinjamankredit.repositori.Repository
-import com.example.pinjamankredit.response.PengajuanResponse
+import PengajuanResponse
 import com.example.pinjamankredit.util.Constants
 import com.example.pinjamankredit.util.Helper
 import com.example.pinjamankredit.util.SharedPreferences

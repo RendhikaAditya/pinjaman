@@ -130,7 +130,7 @@ class NasabahActivity : AppCompatActivity() {
             val url = "${ApiService.baseURL}laporan_nasabah.php"
 
 
-            val intent = Intent(this@NasabahActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url)
+            val intent = Intent(this@NasabahActivity, PdfViewActivity::class.java).putExtra("pdfUrl", url).putExtra("title", "Data Nasabah")
 
             startActivity(intent)
         }
