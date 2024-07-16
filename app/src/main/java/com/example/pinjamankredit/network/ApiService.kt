@@ -7,11 +7,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val baseUrl = "http://192.30.35.208:8080/api/"
+private const val baseUrl = "https://pinjaman.syndronize.asia/api/"
 
 object ApiService {
-    const val imageURL = "http://192.30.35.208:8080/uploads/"
-    const val baseURL = "http://192.30.35.208:8080/"
+    const val imageURL = "https://pinjaman.syndronize.asia/uploads/"
+    const val baseURL = "https://pinjaman.syndronize.asia/"
 
     fun getClient(): Api {
 
